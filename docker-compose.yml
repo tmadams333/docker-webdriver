@@ -16,4 +16,3 @@ chromedriver:
     - "4444:4444"
   environment:
     CHROMEDRIVER_WHITELISTED_IPS: ""
-    DOCKER_IP: "$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$(hostname)")"
