@@ -3,6 +3,8 @@ machine:
     version: 2.7.9
   services:
     - docker
+  environment:
+    DOCKER_IP: localhost
 dependencies:
   pre:
   override:
