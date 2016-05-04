@@ -10,11 +10,10 @@ dependencies:
     - pip install -r test/requirements.txt
 test:
   override:
+    - export DOCKER_IP="$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$(hostname)")"
     - docker-compose build
     - docker-compose pull
-    - docker-compose up:
-        background: true
-    - export DOCKER_IP="$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$(hostname)")"
+    - docker-compose up
     - ./wait-for-stack.sh
     - nosetests
     - cp screenshot.png $CIRCLE_ARTIFACTS
