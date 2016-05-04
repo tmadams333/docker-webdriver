@@ -15,7 +15,7 @@ test:
         background: true
     - ./wait-for-stack.sh
         environment:
-          DOCKER_IP: 192.168.99.100
+          - DOCKER_IP="$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$(hostname)")"
     - nosetests
     - cp screenshot.png $CIRCLE_ARTIFACTS
     - docker-compose stop
