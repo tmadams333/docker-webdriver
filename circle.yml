@@ -14,6 +14,8 @@ test:
     - docker-compose up:
         background: true
     - ./wait-for-stack.sh
+        environment:
+          DOCKER_IP: 192.168.99.100
     - nosetests
     - cp screenshot.png $CIRCLE_ARTIFACTS
     - docker-compose stop
